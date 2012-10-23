@@ -60,6 +60,9 @@ def compress_js():
 
     if settings.TWITTER_INTEGRATION_ENABLED:
         js_files.append('components/twitter.js')
+    
+	if settings.LINKEDIN_INTEGRATION_ENABLED:
+        js_files.append('components/linkedin.js')
 
     if settings.GITHUB_INTEGRATION_ENABLED:
         js_files.append('components/github.js')
