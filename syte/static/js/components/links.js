@@ -37,7 +37,11 @@ function setupLinks() {
          adjustSelection('twitter');
          setupTwitter(url, this);
       }
-      else if (github_integration_enabled && (url.attr('host') == 'github.com' || url.attr('host') == 'www.github.com')) {
+       else if (linkedin_integration_enabled && (url.attr('host') == 'linkedin.com' || url.attr('host') == 'www.linkedin.com')) {
+         adjustSelection('linkedin');
+         setupLinkedin(url, this);
+      }
+	  else if (github_integration_enabled && (url.attr('host') == 'github.com' || url.attr('host') == 'www.github.com')) {
         adjustSelection('github');
         setupGithub(url, this);
       }
