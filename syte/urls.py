@@ -20,6 +20,18 @@ if settings.TWITTER_INTEGRATION_ENABLED:
         url(r'^twitter/(?P<username>\w+)/?$', 'syte.views.twitter.twitter'),
     )
 
+#Linkedin Integration
+if settings.LINKEDIN_OAUTH_ENABLED:
+    urlpatterns += patterns('',
+        url(r'^linkedin/auth/?$', 'syte.views.linkedin.linkedin_auth'),
+        url(r'^linkedin/token/?$', 'syte.views.linkedin.linkedin_token')
+    )
+
+if settings.LINKEDIN_INTEGRATION_ENABLED:
+    urlpatterns += patterns('',
+        url(r'^linkedin/(?P<username>[\-\w]+)/?$', 'syte.views.linkedin.linkedin'),
+    )
+
 #Github Integration
 if settings.GITHUB_OAUTH_ENABLED:
     urlpatterns += patterns('',
