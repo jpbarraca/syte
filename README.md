@@ -139,6 +139,10 @@ Syte has Tent.io integration, which means that you can show your Tent.io public 
 
 ![Syte Tent.io](https://github.com/rigoneri/syte/blob/master/readme-imgs/f-10.png?raw=true)
 
+### Linkedin
+The current purpose of this fork is to integrate with Linkedin. 
+Auth is working. But the profile is not built yet.
+
 ## Responsive UI
 
 Syte is responsive, which means that it scales down to a mobile device screen size.
