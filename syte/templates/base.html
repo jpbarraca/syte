@@ -30,6 +30,7 @@
     <ul class="main-nav">
       <li><a href="/" id="home-link">Home</a></li>
       <li><a href="http://twitter.com/#!/rigoneri" id="twitter-link">Twitter</a></li>
+      <li><a href="http://linkedin.com/login" id="linkedin-link">Linkedin</a></li>
       <li><a href="http://github.com/rigoneri" id="github-link">Github</a></li>
       <li><a href="http://dribbble.com/rigoneri" id="dribbble-link">Dribbble</a></li>
       <li><a href="http://instagr.am/p/Lau1VrEPbt" id="instagram-link">Instagram</a></li>
@@ -57,6 +58,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
 var twitter_integration_enabled = {% if TWITTER_INTEGRATION_ENABLED %}true{% else %}false{% endif %},
+    linkedin_integration_enabled = {% if LINKEDIN_INTEGRATION_ENABLED %}true{% else %}false{% endif %},
     github_integration_enabled = {% if GITHUB_INTEGRATION_ENABLED %}true{% else %}false{% endif %},
     dribbble_integration_enabled = {% if DRIBBBLE_INTEGRATION_ENABLED %}true{% else %}false{% endif %},
     instagram_integration_enabled = {% if INSTAGRAM_INTEGRATION_ENABLED %}true{% else %}false{% endif %},
@@ -94,6 +96,7 @@ var twitter_integration_enabled = {% if TWITTER_INTEGRATION_ENABLED %}true{% els
 <script src="{{ MEDIA_URL }}js/components/links.js"></script>
 
 {% if TWITTER_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/twitter.js"></script>{% endif %}
+{% if LINKEDIN_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/linkedin.js"></script>{% endif %}
 {% if GITHUB_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/github.js"></script>{% endif %}
 {% if DRIBBBLE_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/dribbble.js"></script>{% endif %}
 {% if INSTAGRAM_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/instagram.js"></script>{% endif %}
