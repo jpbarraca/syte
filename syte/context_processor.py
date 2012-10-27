@@ -12,6 +12,8 @@ def site_pages(request):
     context['COMPRESS_REVISION_NUMBER'] = settings.COMPRESS_REVISION_NUMBER
     context['MEDIA_URL'] = settings.MEDIA_URL
 
+    context['SITE_ROOT_URi'] = settings.SITE_ROOT_URI
+
     context['RSS_FEED_URL'] = settings.RSS_FEED_URL
     context['RSS_FEED_ENABLED'] = settings.RSS_FEED_ENABLED
 
