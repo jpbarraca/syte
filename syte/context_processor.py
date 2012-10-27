@@ -7,6 +7,8 @@ def site_pages(request):
     if settings.DEPLOYMENT_MODE == 'dev':
         context['DEV_DEPLOYMENT_MODE'] = True
 
+    context['PERSONAL_PICTURE_URL'] = settings.PERSONAL_PICTURE_URL
+
     context['COMPRESS_REVISION_NUMBER'] = settings.COMPRESS_REVISION_NUMBER
     context['MEDIA_URL'] = settings.MEDIA_URL
 
