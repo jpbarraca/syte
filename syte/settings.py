@@ -65,6 +65,13 @@ INSTALLED_APPS = (
     'gunicorn',
 )
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'syte-cache'
+    }
+}
+
 try:
     from personal_syte_settings import *
 except ImportError:

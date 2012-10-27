@@ -19,10 +19,18 @@ function setupLinkedin(url, el) {
      require(["json!/linkedin/" + username, "text!templates/linkedin-profile.html"],
         function(linkedin_data, linkedin_view) {
             if (linkedin_data.error || linkedin_data.length == 0) {
-		alert("Going to href");
                 window.location = href;
                 return;
             }
+
+            var template = Handlebars.compile(linkedin_view);
+            var location = linkedin_data.location.name;
+            linkedin_data.location.name = location.replace(/\sArea,\s[a-zA-Z\-\s]*/,"");
+            linkedin_data.location.country = location.replace(/.*,/,"");
+            $(template(linkedin_data)).modal().on('hidden', function () {
+                $(this).remove();
+                adjustSelection('home');
+            })
 
             spinner.stop();
 

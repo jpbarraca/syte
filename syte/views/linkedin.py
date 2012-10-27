@@ -5,22 +5,27 @@ from django.conf import settings
 import oauth2 as oauth
 import cgi
 from django.shortcuts import render
+from django.core.cache import cache
 
-request_token_url=settings.LINKEDIN_API_URL + '/uas/oauth/requestToken?scope=r_fullprofile&oauth_callback={0}/linkedin/auth'.format(settings.SITE_ROOT_URI)
+request_token_url=settings.LINKEDIN_API_URL + '/uas/oauth/requestToken?scope=r_fullprofile+r_network+rw_groups&oauth_callback={0}linkedin/auth'.format(settings.SITE_ROOT_URI)
 
 authenticate_url=settings.LINKEDIN_API_URL + '/uas/oauth/authenticate'
 access_token_url=settings.LINKEDIN_API_URL + '/uas/oauth/accessToken'
 consumer = oauth.Consumer(key=settings.LINKEDIN_CONSUMER_KEY,secret=settings.LINKEDIN_CONSUMER_SECRET)
 
 def linkedin(request, username):
-
-    url = '{0}/v1/people/~:(id,first-name,last-name,industry,current-share,summary,specialties,positions,associations,honors,interests,publications,patents,skills,educations,certifications,courses)'.format(
+    if cache.get('LINKEDIN_DATA') is None :
+        url = '{0}/v1/people/~:(id,first-name,last-name,headline,public-profile-url,picture-url,location:(name),group-memberships,num-recommenders,num-connections)'.format(
             settings.LINKEDIN_API_URL)
 
-    token = oauth.Token(settings.LINKEDIN_OAUTH_TOKEN,settings.LINKEDIN_OAUTH_TOKEN_SECRET)
-    client = oauth.Client(consumer, token)
-    resp, profile = client.request(url,headers={"x-li-format": "json"})
-    
+        token = oauth.Token(settings.LINKEDIN_OAUTH_TOKEN,settings.LINKEDIN_OAUTH_TOKEN_SECRET)
+        client = oauth.Client(consumer, token)
+        resp, profile = client.request(url,headers={"x-li-format": "json"})
+        if resp is "200":
+            cache.set('LINKEDIN_DATA',profile,3600)
+    else:
+        profile = cache.get('LINKEDIN_DATA')
+
     return HttpResponse(content=profile,
                         status=resp.status,
                         content_type=resp['content-type'])
