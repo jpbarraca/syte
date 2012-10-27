@@ -114,7 +114,8 @@ TENT_INTEGRATION_ENABLED = True
 TENT_ENTITY_URI = '[ENTER YOUR ENTITY URI HERE] ex. https://yourname.tent.is'
 TENT_FEED_URL = '[ENTER A URL TO YOUR FEED] ex. https://yourname.tent.is'
 
-
+#Gravatar
+GRAVATAR_PICTURE_URL = ''
 
 
 if DEPLOYMENT_MODE == 'dev':
