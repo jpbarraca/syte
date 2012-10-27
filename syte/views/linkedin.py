@@ -19,9 +19,9 @@ def linkedin(request, username):
 
     token = oauth.Token(settings.LINKEDIN_OAUTH_TOKEN,settings.LINKEDIN_OAUTH_TOKEN_SECRET)
     client = oauth.Client(consumer, token)
-    resp, content = client.request(url,headers={"x-li-format": "json"})
-
-    return HttpResponse(content=json.dumps(content),
+    resp, profile = client.request(url,headers={"x-li-format": "json"})
+    
+    return HttpResponse(content=profile,
                         status=resp.status,
                         content_type=resp['content-type'])
 
