@@ -5,13 +5,13 @@
       <img src="{{ pictureUrl }}" alt="{{ firstName }} {{ lastName }}" />
     </a>
     <div class="profile-name">
-      <h2><a href="{{ publicProfileUrl }}">{{ firstName }} {{ lastName }}</a></h2>
+      <h3><a href="{{ publicProfileUrl }}">{{ firstName }} {{ lastName }}</a></h3>
       <h4><a href="{{ publicProfileUrl }}">{{ headline}}</a></h2>
     </div>
-   <p class="profile-location-url">
+    <p class="profile-location-url">
        {{#if location }}
            {{#with location }}
-                <span><a href="http://maps.google.com?q={{ name }},{{ country }}">{{ name }}<br/>{{ country }}</a></span>
+                <span>Location: <a href="http://maps.google.com?q={{ name }},{{ country }}">{{ name }}, {{ country }}</a></span>
                 <span class="divider">·</span>
            {{/with }}
         {{/if}}
@@ -25,4 +25,45 @@
     <li><span><strong>{{ _count }}</strong>Groups</span></li>
     {{/with}}
   </ul>
+
+
+  {{#with positions}}
+  <div class="profile-educations">
+    <hrule />
+    <h3>Positions</h3>
+    <ul>
+    {{#each values}}
+    <li><span><strong>{{ title }} at {{ company.name }}</strong></span></li>
+    {{/each}}
+    </ul>
+  </div>
+  {{/with}}
+
+  {{#with educations}}
+  <div class="profile-educations">
+    <hrule />
+    <h3>Education</h3>
+    <ul>
+    {{#each values}}
+    <li><span><strong>{{ endData.year }} {{ degree }}</strong></span><br />
+      {{ schoolName }}<br />
+      {{ fieldOfStudy }} 
+    </li>
+    {{/each}}
+    </ul>
+  </div>
+  {{/with}}
+
+  {{#with groupMemberships}}
+  <div class="profile-groups">
+    <hrule />
+    <h3>Groups</h3>
+    <ul>
+    {{#each values}}
+    <li><span><a href="http://www.linkedin.com/groups/-{{ group.id }}">{{ group.name }}</a></strong></span></li>
+    {{/each}}
+    </ul>
+  </div>
+  {{/with}}
+  
 </div>
